@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AnimaliController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProprietariController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,6 +201,11 @@
     <Content Include="Views\Animali\Details.cshtml" />
     <Content Include="Views\Animali\Edit.cshtml" />
     <Content Include="Views\Animali\Index.cshtml" />
+    <Content Include="Views\Proprietari\Create.cshtml" />
+    <Content Include="Views\Proprietari\Delete.cshtml" />
+    <Content Include="Views\Proprietari\Details.cshtml" />
+    <Content Include="Views\Proprietari\Edit.cshtml" />
+    <Content Include="Views\Proprietari\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
