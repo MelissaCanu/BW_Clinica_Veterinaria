@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using BW_Clinica_Veterinaria.Models;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BW_Clinica_Veterinaria.Models;
 
 namespace BW_Clinica_Veterinaria.Controllers
 {
@@ -48,10 +45,11 @@ namespace BW_Clinica_Veterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AnimaleID,DataReg,Nome,Tipo,ColoreManto,DataNascita,HasChip,NChip,ProprietarioID,Foto")] Animali animali)
+        public ActionResult Create([Bind(Include = "AnimaleID,Nome,Tipo,ColoreManto,DataNascita,HasChip,NChip,ProprietarioID,Foto")] Animali animali)
         {
             if (ModelState.IsValid)
             {
+                animali.DataReg = DateTime.Now;
                 db.Animali.Add(animali);
                 db.SaveChanges();
                 return RedirectToAction("Index");
