@@ -4,80 +4,37 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Lista Animali</h2>
 
 <p>
-    @Html.ActionLink("Inserisci nuovo animale", "Create")
+    @Html.ActionLink("Registra nuovo Animale", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Proprietari.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataReg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ColoreManto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataNascita)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HasChip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NChip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5 mt-3">
+    @foreach (var model in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Proprietari.Nome) @Html.DisplayFor(model => item.Proprietari.Cognome)
-            </td>
-            <td>
-                @item.DataReg.ToString("dd-MM-yyyy")
-            </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ColoreManto)
-            </td>
-            <td>
-                @Html.Raw(item.DataNascita.HasValue ? item.DataNascita.Value.ToString("dd-MM-yyyy") : "N/A")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HasChip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NChip)
-            </td>
-            <td>
-                <img class="w-75 h-75" src=@Html.DisplayFor(modelItem => item.Foto) />
-            </td>
-            <td>
-                @Html.ActionLink("Modifica", "Edit", new { id = item.AnimaleID }) |
-                @Html.ActionLink("Dettagli", "Details", new { id = item.AnimaleID }) |
-                @Html.ActionLink("Elimina", "Delete", new { id = item.AnimaleID })
-            </td>
-        </tr>
+        <div class="col">
+            <div class="card shadow text-black product-card">
+                <img src="@Html.DisplayFor(modelItem => model.Foto)" class="card-img-top" alt="Armali">
+                <div class="card-body">
+                    <h3 class="card-title">@Html.DisplayFor(modelItem => model.Nome)</h3>
+                    <p class="card-text">
+                        <h4>@Html.DisplayFor(modelItem => model.Tipo)</h4> <br />
+                        <h5> @Html.DisplayFor(modelItem => model.Proprietari.Nome)</h5>
+                        <h5> @Html.DisplayFor(modelItem => model.Proprietari.Cognome)</h5>
+                        <br />
+                        <span>@Html.DisplayFor(modelItem => model.DataNascita)</span>
+                    </p>
+                    <div class="btn-group-sm">
+                        @Html.ActionLink("Modifica", "Edit", new { id = model.AnimaleID }, new { @class = "btn btn-outline-primary" })
+                        @Html.ActionLink("Dettagli", "Details", new { id = model.AnimaleID }, new { @class = "btn btn-outline-secondary" })
+                        @Html.ActionLink("Elimina", "Delete", new { id = model.AnimaleID }, new { @class = "btn btn-outline-dark" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     }
-
-</table>
+</div>
