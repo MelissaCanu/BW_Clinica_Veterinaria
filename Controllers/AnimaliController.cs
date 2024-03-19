@@ -1,7 +1,6 @@
 ﻿using BW_Clinica_Veterinaria.Models;
 using System;
 using System.Data.Entity;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -48,14 +47,14 @@ namespace BW_Clinica_Veterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AnimaleID,Nome,Tipo,ColoreManto,DataNascita,HasChip,NChip,ProprietarioID, Foto")] Animali animali, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "AnimaleID,Nome,Tipo,ColoreManto,DataNascita,HasChip,NChip,ProprietarioID,Foto")] Animali animali, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 if (file != null && file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
                     file.SaveAs(path);
                     animali.Foto = fileName; // Assegna il percorso corretto all'attributo Foto
                 }
