@@ -19,6 +19,8 @@ namespace BW_Clinica_Veterinaria.Models
         public int AnimaleID { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Data Registrazione")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataReg { get; set; }
 
         [Required]
@@ -31,14 +33,19 @@ namespace BW_Clinica_Veterinaria.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Colore Manto")]
         public string ColoreManto { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Data di Nascita")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DataNascita { get; set; }
 
+        [Display(Name = "Chip")]
         public bool HasChip { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Numero Chip")]
         public string NChip { get; set; }
 
         public int? ProprietarioID { get; set; }

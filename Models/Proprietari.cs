@@ -21,14 +21,17 @@ namespace BW_Clinica_Veterinaria.Models
 
         [Required]
         [StringLength(150)]
+        [Display(Name = "Proprietario")]
         public string Nome { get; set; }
 
         [Required]
         [StringLength(150)]
+        [Display(Name = "Cognome Proprietario")]
         public string Cognome { get; set; }
 
         [Required]
         [StringLength(16)]
+        [Display(Name = "Codice Fiscale")]
         public string CodFisc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Inserisci nuovo animale", "Create")
 </p>
 <table class="table">
     <tr>
@@ -44,7 +44,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Proprietari.Nome)
+            @Html.DisplayFor(modelItem => item.Proprietari.Nome) @Html.DisplayFor(model => item.Proprietari.Cognome)
         </td>
         <td>
             @item.DataReg.ToString("dd-MM-yyyy")
@@ -72,9 +72,9 @@
             @Html.DisplayFor(modelItem => item.Foto)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.AnimaleID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.AnimaleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.AnimaleID })
+            @Html.ActionLink("Modifica", "Edit", new { id = item.AnimaleID }) |
+            @Html.ActionLink("Dettagli", "Details", new { id = item.AnimaleID }) |
+            @Html.ActionLink("Elimina", "Delete", new { id = item.AnimaleID })
         </td>
     </tr>
 }
