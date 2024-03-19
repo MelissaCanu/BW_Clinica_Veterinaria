@@ -47,8 +47,9 @@
             @Html.DisplayFor(modelItem => item.Proprietari.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DataReg)
+            @item.DataReg.ToString("dd-MM-yyyy")
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
