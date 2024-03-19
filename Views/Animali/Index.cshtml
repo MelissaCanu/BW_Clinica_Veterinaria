@@ -59,7 +59,7 @@
             @Html.DisplayFor(modelItem => item.ColoreManto)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DataNascita)
+            @Html.Raw(item.DataNascita.HasValue ? item.DataNascita.Value.ToString("dd-MM-yyyy") : "N/A")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.HasChip)
@@ -71,9 +71,9 @@
             @Html.DisplayFor(modelItem => item.Foto)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AnimaleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AnimaleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AnimaleID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.AnimaleID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AnimaleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AnimaleID })
         </td>
     </tr>
 }
