@@ -38,8 +38,14 @@ namespace BW_Clinica_Veterinaria.Controllers
         // GET: Animali/Create
         public ActionResult Create()
         {
-            ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome");
-            return View();
+            var model = new BW_Clinica_Veterinaria.Models.Animali();
+
+            ViewBag.ProprietarioNome = new SelectList(db.Proprietari.Select(p => new
+            {
+                p.ProprietarioID,
+                Nome = p.Nome + " " + p.Cognome
+            }), "ProprietarioID", "Nome");
+            return View(model);
         }
 
         // POST: Animali/Create
@@ -65,7 +71,8 @@ namespace BW_Clinica_Veterinaria.Controllers
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
+            ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
+            ViewBag.ProprietarioCognome = new SelectList(db.Proprietari, "ProprietarioID", "Cognome", animali.ProprietarioID);
             return View(animali);
         }
 
@@ -83,6 +90,7 @@ namespace BW_Clinica_Veterinaria.Controllers
                 return HttpNotFound();
             }
             ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
+            ViewBag.ProprietarioCognome = new SelectList(db.Proprietari, "ProprietarioID", "Cognome", animali.ProprietarioID);
             return View(animali);
         }
 
@@ -102,6 +110,7 @@ namespace BW_Clinica_Veterinaria.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
+            ViewBag.ProprietarioCognome = new SelectList(db.Proprietari, "ProprietarioID", "Cognome", animali.ProprietarioID);
             return View(animali);
         }
 
