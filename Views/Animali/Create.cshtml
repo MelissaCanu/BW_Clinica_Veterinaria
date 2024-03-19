@@ -74,7 +74,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <img src="@Html.DisplayFor(modelItem => Model.Foto)" class="card-img-top" alt="@Model.Nome Image">
             <div class="col-md-10">
                 <input type="file" name="file" class="form-control" />
                 @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })

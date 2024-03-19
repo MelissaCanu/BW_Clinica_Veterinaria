@@ -41,42 +41,43 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Proprietari.Nome) @Html.DisplayFor(model => item.Proprietari.Cognome)
-        </td>
-        <td>
-            @item.DataReg.ToString("dd-MM-yyyy")
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proprietari.Nome) @Html.DisplayFor(model => item.Proprietari.Cognome)
+            </td>
+            <td>
+                @item.DataReg.ToString("dd-MM-yyyy")
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ColoreManto)
-        </td>
-        <td>
-            @Html.Raw(item.DataNascita.HasValue ? item.DataNascita.Value.ToString("dd-MM-yyyy") : "N/A")
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HasChip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NChip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.ActionLink("Modifica", "Edit", new { id = item.AnimaleID }) |
-            @Html.ActionLink("Dettagli", "Details", new { id = item.AnimaleID }) |
-            @Html.ActionLink("Elimina", "Delete", new { id = item.AnimaleID })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ColoreManto)
+            </td>
+            <td>
+                @Html.Raw(item.DataNascita.HasValue ? item.DataNascita.Value.ToString("dd-MM-yyyy") : "N/A")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasChip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NChip)
+            </td>
+            <td>
+                <img class="w-75 h-75" src=@Html.DisplayFor(modelItem => item.Foto) />
+            </td>
+            <td>
+                @Html.ActionLink("Modifica", "Edit", new { id = item.AnimaleID }) |
+                @Html.ActionLink("Dettagli", "Details", new { id = item.AnimaleID }) |
+                @Html.ActionLink("Elimina", "Delete", new { id = item.AnimaleID })
+            </td>
+        </tr>
+    }
 
 </table>

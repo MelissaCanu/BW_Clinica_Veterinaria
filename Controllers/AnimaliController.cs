@@ -54,7 +54,7 @@ namespace BW_Clinica_Veterinaria.Controllers
                 if (file != null && file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                    var path = Path.Combine(Server.MapPath("/Content/Images"), fileName);
                     file.SaveAs(path);
                     animali.Foto = fileName; // Assegna il percorso corretto all'attributo Foto
                 }
