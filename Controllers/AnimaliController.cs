@@ -1,6 +1,7 @@
 ﻿using BW_Clinica_Veterinaria.Models;
 using System;
 using System.Data.Entity;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -46,22 +47,20 @@ namespace BW_Clinica_Veterinaria.Controllers
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AnimaleID,Nome,Tipo,ColoreManto,DataNascita,HasChip,NChip,ProprietarioID,Foto")] Animali animali, HttpPostedFileBase file)
         {
-
             if (file != null && file.ContentLength > 0)
             {
                 var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
-                file.SaveAs(path);
-
-                animali.Foto = fileName;
+                var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                file.SaveAs(path); 
+                animali.Foto = "/Content/Images/" + fileName;
             }
 
             if (ModelState.IsValid)
             {
-                animali.DataReg = DateTime.Now;
+                //animali.DataReg = DateTime.Now;
                 db.Animali.Add(animali);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,6 +69,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
             return View(animali);
         }
+
 
         // GET: Animali/Edit/5
         public ActionResult Edit(int? id)
