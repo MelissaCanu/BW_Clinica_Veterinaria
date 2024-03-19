@@ -96,7 +96,9 @@ namespace BW_Clinica_Veterinaria.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 db.Entry(animali).State = EntityState.Modified;
+                db.Entry(animali).Property(x => x.DataReg).IsModified = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
