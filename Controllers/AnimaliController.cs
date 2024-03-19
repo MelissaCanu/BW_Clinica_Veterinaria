@@ -47,26 +47,26 @@ namespace BW_Clinica_Veterinaria.Controllers
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AnimaleID,Nome,Tipo,ColoreManto,DataNascita,HasChip,NChip,ProprietarioID,Foto")] Animali animali, HttpPostedFileBase file)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "AnimaleID,Nome,Tipo,ColoreManto,DataNascita,HasChip,NChip,ProprietarioID, Foto")] Animali animali, HttpPostedFileBase file)
         {
-            if (file != null && file.ContentLength > 0)
-            {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
-                file.SaveAs(path); 
-                animali.Foto = "/Content/Images/" + fileName;
-            }
-
             if (ModelState.IsValid)
             {
-                //animali.DataReg = DateTime.Now;
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                    file.SaveAs(path);
+                    animali.Foto = fileName; // Assegna il percorso corretto all'attributo Foto
+                }
+
+                animali.DataReg = DateTime.Now;
                 db.Animali.Add(animali);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
+            //ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
             return View(animali);
         }
 
