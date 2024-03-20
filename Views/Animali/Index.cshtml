@@ -6,23 +6,24 @@
 
 <h2>Lista Animali</h2>
 
-<p>
-    @Html.ActionLink("Registra nuovo Animale", "Create")
-</p>
+ @Html.ActionLink("Registra nuovo Animale", "Create" , new { @class = "btn btn-outline-primary" })
 
-<div class="row row-cols-1 row-cols-md-3 g-4 mb-5 mt-3">
+<div class="row row-cols-1 row-cols-md-3 g-3 mb-3 mt-3">
     @foreach (var model in Model)
     {
-
         <div class="col">
-            <div class="card shadow text-black product-card">
-                <img src="@Html.DisplayFor(modelItem => model.Foto)" class="card-img-top" alt="Armali">
+            <div class="card shadow-lg text-black card">
+                <img src="@Html.DisplayFor(modelItem => model.Foto)" class="card-img-bottom" alt="Armali" width="400" height="600" style="object-fit:contain">
                 <div class="card-body">
                     <h3 class="card-title">@Html.DisplayFor(modelItem => model.Nome)</h3>
                     <p class="card-text">
-                        <h4>@Html.DisplayFor(modelItem => model.Tipo)</h4> <br />
-                        <h5> @Html.DisplayFor(modelItem => model.Proprietari.Nome)</h5>
-                        <h5> @Html.DisplayFor(modelItem => model.Proprietari.Cognome)</h5>
+                        <h4>@Html.DisplayFor(modelItem => model.Tipo)</h4>
+                        <br />
+                        <div class="form-group">
+                            @Html.DisplayFor(modelItem => model.Proprietari.NomeCompleto)
+                        </div>
+
+
                         <br />
                         <span>@Html.DisplayFor(modelItem => model.DataNascita)</span>
                     </p>
@@ -34,7 +35,6 @@
                 </div>
             </div>
         </div>
-
 
     }
 </div>

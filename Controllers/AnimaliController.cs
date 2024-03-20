@@ -38,7 +38,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         // GET: Animali/Create
         public ActionResult Create()
         {
-            var model = new BW_Clinica_Veterinaria.Models.Animali();
+            var model = new Animali();
 
             ViewBag.ProprietarioNome = new SelectList(db.Proprietari.Select(p => new
             {
@@ -53,30 +53,27 @@ namespace BW_Clinica_Veterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AnimaleID,Nome,Tipo,ColoreManto,DataNascita,HasChip,NChip,ProprietarioID,Foto")] Animali animali, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "AnimaleID, Nome,Tipo ,ColoreManto, DataNascita, HasChip, NChip, ProprietarioID, Foto")] Animali animali, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 if (file != null && file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("/Content/Images"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
                     file.SaveAs(path);
-                    animali.Foto = fileName; // Assegna il percorso corretto all'attributo Foto
+                    animali.Foto = "/Content/Images/" + fileName; // Assegna il percorso corretto all'attributo Foto
                 }
-
                 animali.DataReg = DateTime.Now;
                 db.Animali.Add(animali);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
-            ViewBag.ProprietarioCognome = new SelectList(db.Proprietari, "ProprietarioID", "Cognome", animali.ProprietarioID);
+            //ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
             return View(animali);
         }
 
-
+        // GET: Animali/Edit/5
         // GET: Animali/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -89,28 +86,43 @@ namespace BW_Clinica_Veterinaria.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
-            ViewBag.ProprietarioCognome = new SelectList(db.Proprietari, "ProprietarioID", "Cognome", animali.ProprietarioID);
+
+            ViewBag.ProprietarioNome = new SelectList(db.Proprietari.Select(p => new
+            {
+                p.ProprietarioID,
+                Nome = p.Nome + " " + p.Cognome
+            }), "ProprietarioID", "Nome", animali.ProprietarioID);
+
             return View(animali);
         }
+
 
         // POST: Animali/Edit/5
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AnimaleID,DataReg,Nome,Tipo,ColoreManto,DataNascita,HasChip,NChip,ProprietarioID,Foto")] Animali animali)
+        public ActionResult Edit([Bind(Include = "AnimaleID,DataReg,Nome,Tipo,ColoreManto,DataNascita,HasChip,NChip,ProprietarioID,Foto")] Animali animali, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                    file.SaveAs(path);
+                    animali.Foto = "/Content/Images/" + fileName; // Assegna il percorso corretto all'attributo Foto
+                }
 
                 db.Entry(animali).State = EntityState.Modified;
                 db.Entry(animali).Property(x => x.DataReg).IsModified = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
             ViewBag.ProprietarioCognome = new SelectList(db.Proprietari, "ProprietarioID", "Cognome", animali.ProprietarioID);
+           
             return View(animali);
         }
 

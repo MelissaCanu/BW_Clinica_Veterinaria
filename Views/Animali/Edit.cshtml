@@ -7,10 +7,10 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Animali", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>Animali</h4>
     <hr />
@@ -18,12 +18,12 @@
     @Html.HiddenFor(model => model.AnimaleID)
 
     @*<div class="form-group">
-        @Html.LabelFor(model => model.DataReg, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.DataReg, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DataReg, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
+            @Html.LabelFor(model => model.DataReg, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataReg, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataReg, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -78,7 +78,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ProprietarioID, "Seleziona Proprietario", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("ProprietarioID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.ProprietarioID, ViewBag.ProprietarioNome as SelectList, "Seleziona Proprietario", htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.ProprietarioID, "", new { @class = "text-danger" })
         </div>
     </div>

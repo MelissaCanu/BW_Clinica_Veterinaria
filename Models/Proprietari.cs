@@ -29,6 +29,14 @@ namespace BW_Clinica_Veterinaria.Models
         [Display(Name = "Cognome Proprietario")]
         public string Cognome { get; set; }
 
+        public string NomeCompleto
+        {
+            get
+            {
+                return $"{Nome} {Cognome}";
+            }
+        }
+
         [Required]
         [StringLength(16)]
         [Display(Name = "Codice Fiscale")]
