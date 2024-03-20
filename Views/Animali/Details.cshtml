@@ -10,6 +10,13 @@
     <h4>Animali</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <dd>
+            <div style="background-color:grey; width:250px; height:250px;" class="rounded-circle d-flex justify-content-center overflow-hidden">
+                <img src=@Html.DisplayFor(model => model.Foto) width="200" height="200" style="object-fit:fill" class="mt-3" />
+            </div>
+        </dd>
+
         <dt>
             @Html.DisplayName("Proprietario")
         </dt>
@@ -74,13 +81,9 @@
             @Html.DisplayFor(model => model.NChip)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
+        </dt>*@
 
     </dl>
 </div>
