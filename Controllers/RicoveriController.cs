@@ -48,35 +48,17 @@ namespace BW_Clinica_Veterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RicoveroID,DataIN,DataOUT,AnimaleID,Nome,Tipo,ColoreManto,DataNascita,DataReg,HasChip,NChip,Foto")] RicoveriAnimaliViewModel model)
+        public ActionResult Create([Bind(Include = "RicoveroID,DataIN,DataOUT,AnimaleID")] Ricoveri ricoveri)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var animale = new Animali
-                {
-                    Nome = model.Nome,
-                    Tipo = model.Tipo,
-                    ColoreManto = model.ColoreManto,
-                    DataNascita = model.DataNascita,
-                    DataReg = model.DataReg,
-                    HasChip = model.HasChip,
-                    NChip = model.NChip,
-                    Foto = model.Foto,
-                };
-                db.Animali.Add(animale);
-                db.SaveChanges();
-
-                var ricovero = new Ricoveri
-                {
-                    DataIN = model.DataIN,
-                    DataOUT = model.DataOUT,
-                    AnimaleID = animale.AnimaleID
-                };
-                db.Ricoveri.Add(ricovero);
+                db.Ricoveri.Add(ricoveri);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(model);
+
+            ViewBag.AnimaleID = new SelectList(db.Animali, "AnimaleID", "Nome", ricoveri.AnimaleID);
+            return View(ricoveri);
         }
 
         // GET: Ricoveri/Edit/5
