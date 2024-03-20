@@ -1,10 +1,8 @@
 namespace BW_Clinica_Veterinaria.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Visite")]
     public partial class Visite
@@ -15,6 +13,7 @@ namespace BW_Clinica_Veterinaria.Models
         public int? AnimaleID { get; set; }
 
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
 
         [Required]
