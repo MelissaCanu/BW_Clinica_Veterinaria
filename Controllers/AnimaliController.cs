@@ -71,7 +71,14 @@ namespace BW_Clinica_Veterinaria.Controllers
                 animali.DataReg = DateTime.Now;
                 db.Animali.Add(animali);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                if (db.Proprietari.Find(animali.ProprietarioID) == null || animali.ProprietarioID == 24)
+                {
+                    return RedirectToAction("Create", "Ricoveri");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             //ViewBag.ProprietarioID = new SelectList(db.Proprietari, "ProprietarioID", "Nome", animali.ProprietarioID);
             return View(animali);
