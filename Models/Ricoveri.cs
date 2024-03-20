@@ -17,7 +17,7 @@ namespace BW_Clinica_Veterinaria.Models
 
         [Column(TypeName = "date")]
         public DateTime? DataOUT { get; set; }
-
+        [Display(Name = "Animale")]
         public int AnimaleID { get; set; }
 
         public virtual Animali Animali { get; set; }

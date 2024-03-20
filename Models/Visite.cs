@@ -9,7 +9,7 @@ namespace BW_Clinica_Veterinaria.Models
     {
         [Key]
         public int VisitaID { get; set; }
-
+        [Display(Name = "Animale")]
         public int? AnimaleID { get; set; }
 
         [Column(TypeName = "date")]

@@ -1,0 +1,42 @@
+﻿@model BW_Clinica_Veterinaria.Models.Ricoveri
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ricoveri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Animali.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Animali.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataOUT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataOUT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RicoveroID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
