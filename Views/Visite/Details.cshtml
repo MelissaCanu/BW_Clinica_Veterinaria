@@ -1,0 +1,52 @@
+﻿@model BW_Clinica_Veterinaria.Models.Visite
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Visite</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Animali.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Animali.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Esame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Esame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cura)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VisitaID }) |
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Cronistoria Visite", "Cronistoria", new { id = Model.AnimaleID })
+</p>
