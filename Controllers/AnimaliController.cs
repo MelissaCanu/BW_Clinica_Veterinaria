@@ -14,9 +14,13 @@ namespace BW_Clinica_Veterinaria.Controllers
         private ModelDBContext db = new ModelDBContext();
 
         // GET: Animali
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
             var animali = db.Animali.Include(a => a.Proprietari);
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                animali = animali.Where(a => a.Nome.Contains(SearchString));
+            }
             return View(animali.ToList());
         }
 

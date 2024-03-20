@@ -6,7 +6,16 @@
 
 <h2>Lista Animali</h2>
 
- @Html.ActionLink("Registra nuovo Animale", "Create" , new { @class = "btn btn-outline-primary" })
+@using (Html.BeginForm("Index", "Animali", FormMethod.Get))
+{
+    //search bar
+    <p>
+        Nome: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+@Html.ActionLink("Registra nuovo Animale", "Create", new { @class = "btn btn-outline-primary" })
 
 <div class="row row-cols-1 row-cols-md-3 g-3 mb-3 mt-3">
     @foreach (var model in Model)
@@ -31,6 +40,7 @@
                         @Html.ActionLink("Modifica", "Edit", new { id = model.AnimaleID }, new { @class = "btn btn-outline-primary" })
                         @Html.ActionLink("Dettagli", "Details", new { id = model.AnimaleID }, new { @class = "btn btn-outline-secondary" })
                         @Html.ActionLink("Elimina", "Delete", new { id = model.AnimaleID }, new { @class = "btn btn-outline-dark" })
+                        @Html.ActionLink("Esami", "Cronistoria", "Visite", new { id = model.AnimaleID }, new { @class = "btn btn-outline-warning" })
                     </div>
                 </div>
             </div>

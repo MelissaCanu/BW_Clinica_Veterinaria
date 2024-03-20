@@ -1,4 +1,5 @@
 ﻿using BW_Clinica_Veterinaria.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -12,9 +13,21 @@ namespace BW_Clinica_Veterinaria.Controllers
         private ModelDBContext db = new ModelDBContext();
 
         // GET: Visite
-        public ActionResult Index()
+
+        //searchString è il parametro che viene passato dal form di ricerca per filtrare le visite per nome dell'animale 
+        public ActionResult Index(string searchString)
         {
-            var visite = db.Visite.Include(v => v.Animali);
+            //from serve per selezionare le visite e includere anche i dati dell'animale
+            //è una join tra le tabelle Visite e Animali 
+            var visite = from v in db.Visite.Include(v => v.Animali)
+                         select v;
+
+            //se è stato inserito un valore nel campo di ricerca, filtro le visite per nome dell'animale
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                visite = visite.Where(v => v.Animali.Nome.Contains(searchString));
+            }
+
             return View(visite.ToList());
         }
 

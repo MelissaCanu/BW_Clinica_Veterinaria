@@ -6,46 +6,34 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm("Index", "Visite", FormMethod.Get))
+{
+    //search bar
+    <p>
+        Nome: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Animali.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Esame)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cura)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
+@foreach (var item in Model)
+{
+    <div class="card my-3">
+        <div class="card-header fs-2 fw-bold">
             @Html.DisplayFor(modelItem => item.Animali.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Esame)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cura)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.VisitaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.VisitaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VisitaID })
-        </td>
-    </tr>
+        </div>
+        <div class="card-body">
+            <h5 class="h3">@Html.DisplayFor(modelItem => item.Esame)</h5>
+            <p class="card-text">@Html.DisplayFor(modelItem => item.Cura)</p>
+            <p class="card-text">@Html.DisplayFor(modelItem => item.Data)</p>
+            <div class="card-footer">
+                @Html.ActionLink("Modifica", "Edit", new { id = item.VisitaID }, new { @class = "btn btn-outline-success" })
+                @Html.ActionLink("Dettagli", "Details", new { id = item.VisitaID }, new { @class = "btn btn-outline-secondary" })
+                @Html.ActionLink("Elimina", "Delete", new { id = item.VisitaID }, new { @class = "btn btn-outline-dark" })
+            </div>
+        </div>
+    </div>
 }
-
-</table>
