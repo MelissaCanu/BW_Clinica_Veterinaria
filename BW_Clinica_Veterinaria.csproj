@@ -123,6 +123,7 @@
     <Compile Include="Controllers\AnimaliController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProprietariController.cs" />
+    <Compile Include="Controllers\RicoveriController.cs" />
     <Compile Include="Controllers\VisiteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -213,6 +214,11 @@
     <Content Include="Views\Visite\Edit.cshtml" />
     <Content Include="Views\Visite\Index.cshtml" />
     <Content Include="Views\Visite\Cronistoria.cshtml" />
+    <Content Include="Views\Ricoveri\Delete.cshtml" />
+    <Content Include="Views\Ricoveri\Details.cshtml" />
+    <Content Include="Views\Ricoveri\Edit.cshtml" />
+    <Content Include="Views\Ricoveri\Index.cshtml" />
+    <Content Include="Views\Ricoveri\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
