@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Proprietari</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Aggiungi Proprietario", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.CodFisc)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProprietarioID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProprietarioID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProprietarioID })
+            @Html.ActionLink("Modifica", "Edit", new { id = item.ProprietarioID }, new { @class = "btn btn-outline-primary" })
+            @Html.ActionLink("Dettagli", "Details", new { id = item.ProprietarioID }, new { @class = "btn btn-outline-secondary" })
+            @Html.ActionLink("Elimina", "Delete", new { id = item.ProprietarioID }, new { @class = "btn btn-outline-dark" })
         </td>
     </tr>
 }

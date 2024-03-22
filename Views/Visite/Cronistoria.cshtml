@@ -7,7 +7,7 @@
 <h2>Cronistoria</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Aggiungi Anamnesi", "Create")
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.Cura)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.VisitaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.VisitaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VisitaID })
+            @Html.ActionLink("Modifica", "Edit", new { id=item.VisitaID }) |
+            @Html.ActionLink("Dettagli", "Details", new { id=item.VisitaID }) |
+            @Html.ActionLink("Elimina", "Delete", new { id=item.VisitaID })
         </td>
     </tr>
 }

@@ -88,6 +88,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Modifica", "Edit", new { id = Model.AnimaleID }) |
-    @Html.ActionLink("Torna alla Home", "Index")
+    @Html.ActionLink("Modifica", "Edit", new { id = Model.AnimaleID }, new { @class = "btn btn-outline-danger" }) |
+    @Html.ActionLink("Torna alla Home", "Index", new { @class = "btn btn-outline-success" })
 </p>

@@ -4,9 +4,9 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Elimina</h2>
 
-<h3>Sei proprio sicuro di voler cancellare?</h3>
+<h3>Sei proprio sicuro di voler eliminare questo animale dal database?</h3>
 <div>
     <h4>Animali</h4>
     <hr />
@@ -88,9 +88,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Cancella" class="btn btn-default" /> |
-            @Html.ActionLink("Torna alla Home", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Elimina" class="btn btn-outline-danger" /> |
+    @Html.ActionLink("Torna alla Home", "Index", new { @class = "btn btn-outline-success" })
+</div>
     }
 </div>

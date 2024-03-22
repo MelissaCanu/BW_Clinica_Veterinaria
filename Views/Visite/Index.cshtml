@@ -4,19 +4,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Lista Visite</h2>
 
 @using (Html.BeginForm("Index", "Visite", FormMethod.Get))
 {
     //search bar
     <p>
         Nome: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
+        <input type="submit" value="Cerca" />
     </p>
 }
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Aggiungi Visita", "Create")
 </p>
 
 @foreach (var item in Model)

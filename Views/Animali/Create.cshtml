@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Aggiungi Animale</h2>
 
 @using (Html.BeginForm("Create", "Animali", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
@@ -82,7 +82,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Crea" class="btn btn-default" />
+                <input type="submit" value="Crea" class="btn btn-outline-warning" />
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@
 }
 
 <div>
-    @Html.ActionLink("Torna alla Home", "Index")
+    @Html.ActionLink("Torna alla Home", "Index", new { @class = "btn btn-outline-success" })
 </div>
 
 @section Scripts {

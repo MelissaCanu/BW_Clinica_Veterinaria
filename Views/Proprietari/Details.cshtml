@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Dettagli</h2>
 
 <div>
     <h4>Proprietari</h4>
@@ -37,6 +37,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProprietarioID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modifica", "Edit", new { id = Model.ProprietarioID }, new { @class = "btn btn-outline-danger" }) |
+    @Html.ActionLink("Torna alla lista", "Index", new { @class = "btn btn-outline-success" })
 </p>
