@@ -9,37 +9,36 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Animali.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataIN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataOUT)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Animali.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataIN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataOUT)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RicoveroID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RicoveroID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RicoveroID })
-        </td>
-    </tr>
+
+@foreach (var item in Model)
+{
+    <div class="card mb-3 shadow" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="@Url.Content(item.Animali.Foto)" alt="Foto" class="img-fluid rounded-start" />
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title fs-5">Nome: <span class="card-text fw-normal ms-3">@Html.DisplayFor(modelItem => item.Animali.Nome)</span></h4>
+
+                    <h5 class="card-title fs-5">Razza: <span class="card-text fw-normal ms-3">@Html.DisplayFor(modelItem => item.Animali.Tipo)</span></h5>
+
+                    <h5 class="card-title fs-5">Data di registrazione: <span class="card-text fw-normal ms-3 text-nowrap"> @item.Animali.DataReg.ToString("dd-MM-yyyy")</span></h5>
+
+                    <h5 class="card-title fs-5">Livrea: <span class="card-text fw-normal ms-3">@Html.DisplayFor(modelItem => item.Animali.ColoreManto)</span></h5>
+
+                    <h5 class="card-title fs-5">Chip Sì/No: <span class="card-text fw-normal ms-3">@Html.DisplayFor(modelItem => item.Animali.HasChip)</span></h5>
+
+                    <h5 class="card-title fs-5">Numero Chip: <span class="card-text fw-normal ms-3">@Html.DisplayFor(modelItem => item.Animali.NChip)</span></h5>
+
+                    <h5 class="card-title fs-5">Data di ingresso: <span class="card-text fw-normal ms-3 text-nowrap">  @item.DataIN.ToString("dd-MM-yyyy")</span></h5>
+
+                    <h5 class="card-title fs-5">Data di uscita: <span class="card-text fw-normal ms-3 text-nowrap">@(item.DataOUT != null ? item.DataOUT.Value.ToString("dd-MM-yyyy") : "")</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 }
-
-</table>
