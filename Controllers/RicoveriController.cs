@@ -82,7 +82,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RicoveroID,DataIN,DataOUT,AnimaleID")] Ricoveri ricoveri)
+        public ActionResult Edit([Bind(Include = "RicoveroID,DataIN,DataOUT,AnimaleID,Costo")] Ricoveri ricoveri)
         {
             if (ModelState.IsValid)
             {

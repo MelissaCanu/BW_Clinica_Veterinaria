@@ -17,6 +17,11 @@ namespace BW_Clinica_Veterinaria.Models
 
         [Column(TypeName = "date")]
         public DateTime? DataOUT { get; set; }
+
+        public decimal Costo { get; set; }
+
+
+
         [Display(Name = "Animale")]
         public int AnimaleID { get; set; }
 

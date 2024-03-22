@@ -132,6 +132,10 @@
     <Compile Include="Migrations\202403181142055_DropColumn.Designer.cs">
       <DependentUpon>202403181142055_DropColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202403221103291_AddCostRicovero.cs" />
+    <Compile Include="Migrations\202403221103291_AddCostRicovero.Designer.cs">
+      <DependentUpon>202403221103291_AddCostRicovero.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animali.cs" />
     <Compile Include="Models\Armadietti.cs" />
@@ -254,6 +258,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202403181142055_DropColumn.resx">
       <DependentUpon>202403181142055_DropColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403221103291_AddCostRicovero.resx">
+      <DependentUpon>202403221103291_AddCostRicovero.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
