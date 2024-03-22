@@ -121,6 +121,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             return RedirectToAction("Index");
         }
 
+        //Questo metodo restituisce una vista parziale con la lista dei ricoveri attivi tramite una chiamata AJAX
         // GET: Ricoveri/ListaRicoveri Async
 
         public async Task <ActionResult> RicoveriAttivi()

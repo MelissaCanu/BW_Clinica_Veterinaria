@@ -13,6 +13,7 @@ namespace BW_Clinica_Veterinaria.Controllers
     {
         private ModelDBContext db = new ModelDBContext();
 
+        // A questa Get Agiungiamo la possibilità di effettuare una ricerca per nome dell'animale
         // GET: Animali
         public ActionResult Index(string SearchString)
         {
