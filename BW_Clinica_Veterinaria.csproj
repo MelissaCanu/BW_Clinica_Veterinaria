@@ -223,6 +223,7 @@
     <Content Include="Views\Ricoveri\Edit.cshtml" />
     <Content Include="Views\Ricoveri\Index.cshtml" />
     <Content Include="Views\Ricoveri\Create.cshtml" />
+    <Content Include="Views\Ricoveri\RicoveriAttivi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

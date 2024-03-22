@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using BW_Clinica_Veterinaria.Models;
@@ -119,6 +120,25 @@ namespace BW_Clinica_Veterinaria.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // GET: Ricoveri/ListaRicoveri Async
+
+        public async Task <ActionResult> RicoveriAttivi()
+        {
+            var ricoveriAttivi = await db.Ricoveri
+            .Include (r => r.Animali)
+            .Where (r => r.DataOUT == null)
+            .ToListAsync();
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView (ricoveriAttivi);
+            }
+
+            return View(ricoveriAttivi);
+        }
+        
+
 
         protected override void Dispose(bool disposing)
         {

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<BW_Clinica_Veterinaria.Models.Ricoveri>
+
+@{
+    ViewBag.Title = "RicoveriAttivi";
+}
+<h2>RicoveriAttivi</h2>
+
+
+
+@foreach (var item in Model)
+{
+    <div>
+        <h4>@Html.DisplayFor(modelItem => item.Animali.Nome)</h4>
+        <p>@item.DataIN.ToString("dd-MM-yyyy")</p>
+    </div>
+}
